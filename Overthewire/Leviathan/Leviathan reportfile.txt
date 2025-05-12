@@ -1,0 +1,331 @@
+﻿Intern Name: Kushagra Ghadigaonkar         10 =Solved krypton lab,leviathan lab and
+                                                                        Helped for natas lab
+                  Anand Khandare                22 =Solved natas lab
+                 Sunny Patekar                 39 =made the Documentation of all labs
+Program: Digisuraksha Parhari Foundation Internship 
+Issued By: Digisuraksha Parhari Foundation 
+Supported By: Infinisec Technologies Pvt. Ltd. 
+Report Submission Date: 28 April 2025
+
+
+For Orginal Doc link:
+https://docs.google.com/document/d/197LCNmeNyc9RwR-wt_Nqua5ylSxoLhOvo-gqXSuOjqk/edit?usp=sharing
+
+                                                                  Cybersecurity assignment 2
+
+
+Leviathan 
+
+
+Level 0
+Leviathan is one of the wargames from OverTheWire, a site that teaches cybersecurity and ethical hacking through hands-on puzzles. Leviathan focuses on basic exploitation, especially things like file permissions, insecure storage of credentials, and simple program misuse.
+In this particular level (leviathan0), your goal is to find the password for the next user level—which is leviathan1. The idea is to simulate real-world security issues where a system might leak sensitive information if not configured properly.
+Objective of Leviathan Level 0
+The goal of the Leviathan wargame series (hosted by OverTheWire) is to help you practice basic Linux command line and file navigation skills, often related to finding hidden files, reading file contents, and sometimes executing programs or scripts with different permissions.
+In Level 0, your goal is simple:
+                                                                                                                  * Connect to the server using the login for leviathan0
+
+                                                                                                                  * Look around the system to find a password for the next level (leviathan1)
+
+________________
+
+
+🧠 What's the Mindset?
+Think of it like this:
+You're a digital detective. You're dropped into a room (in this case, a Linux environment) with access to some files. Some of the information is in plain sight, but other stuff is hidden in folders or files you might not check unless you're curious and methodical.
+________________
+
+
+🕵️ What are You Supposed to Discover?
+When you connect to the system as leviathan0, you're looking for something that contains a clue or the password for leviathan1.
+Often, wargames like this hide clues in:
+                                                                                                                     * Hidden directories (those with a dot at the beginning)
+
+                                                                                                                     * Old backups
+
+                                                                                                                     * Unusual files that regular users might overlook
+
+                                                                                                                     * Files that are readable, but not obviously important
+
+________________
+
+
+🔍 What Happens in This Level?
+You explore the home directory and find a hidden folder. Hidden folders are like secret compartments in a drawer — they're not immediately visible, but they're there if you know how to look.
+Inside that hidden folder, there's a file that turns out to be some kind of browser bookmark backup — which is just a saved list of web links.
+But this file isn’t just regular bookmarks. If you read through its contents, you notice it has some kind of credentials or sensitive information — perhaps something like a stored password.
+And there it is — the password for the next level, leviathan1, hiding in plain sight inside that file.
+________________
+
+
+💡 Key Lessons from Level 0
+                                                                                                                        1. Always explore — Don't assume everything useful is visible right away.
+
+                                                                                                                        2. Check hidden files/folders — Especially if you're stuck or can't find anything obvious.
+
+                                                                                                                        3. Look into file content — Even if it looks boring or irrelevant (like a bookmarks file), it might hide gold.
+
+                                                                                                                        4. Be curious and dig deep — Sometimes solving a level is less about complex tools and more about thinking like an investigator.
+
+  
+
+
+
+
+
+  
+
+
+
+Drive link
+https://drive.google.com/drive/folders/16RMi7ZinWF2Et2YvyMz9jxAVRoSkVJRJ?usp=sharing
+Level 1
+
+
+Objective of the Level
+You're trying to figure out the password for the next level — leviathan2. To do that, you’ll be examining a small binary file named check that's located on the system.
+The main tools you’ll use are:
+                                                                                                                           * SSH (to connect to the system),
+
+                                                                                                                           * basic Linux commands (like listing files and reading them),
+
+                                                                                                                           * and ltrace (to see what a program is doing behind the scenes).
+
+________________
+
+
+🔍 Step-by-Step Explanation
+1. SSH into the Server
+You begin by connecting to a remote machine via SSH. Think of SSH as a secure way to control another computer from your terminal. You use the provided credentials to access the machine as the user leviathan1.
+                                                                                                                              * You’re essentially stepping into someone else's digital shoes and working from inside their environment.
+
+2. Run the check Program
+Once logged in, you see a file named check. You try to run it to see what it does. In many OverTheWire challenges, these programs are custom binaries that require user input.
+                                                                                                                                 * This program probably asks you for a password and tells you whether it’s correct or not — kind of like a mini password checker.
+
+But... it’s not telling you what the password is, just whether your guess is correct. That’s no fun — so we dig deeper.
+3. Use ltrace on the Program
+This is where it gets more clever.
+ltrace is a tool that shows you what library functions the program is calling while it runs. Think of it as peeking behind the curtain to watch the program’s internal dialogue with its tools.
+                                                                                                                                    * When you run the check program using ltrace, you can often see it comparing your input to the real password.
+
+                                                                                                                                    * For example, if the program is using a function like strcmp() to compare the password you type with the correct one, ltrace might show you both values — yours and the real one — right there in the output.
+
+That’s usually how you discover the correct password, without needing to reverse-engineer the whole binary.
+4. Use the Found Password to Read the Next One
+Once you discover the correct password using ltrace, you use it to read the contents of the file where the password for the next level is stored — usually something like /etc/leviathan_pass/leviathan2.
+                                                                                                                                       * This file is protected so that only the current level's user can read it. That’s why you needed to complete this level to move forward.
+
+5. Confirm What’s There
+You might also list files or explore a bit just to see what else is in the directory — sometimes useful, sometimes just hab
+
+
+
+
+  
+
+Drive link
+https://drive.google.com/drive/folders/1IJLbaxXUeWSV0VjqXxe7dc5M_uhe-nZu?usp=sharing
+
+
+Level 2
+Goal of the Level
+You’re trying to escalate from leviathan2 to leviathan3 by exploiting a small vulnerability in a program called printfile. The ultimate goal is to get the password for leviathan3, which is stored in a file you can’t normally access.
+________________
+
+
+🔐 Step 1: SSH into the Server
+You're connecting to the remote server using the leviathan2 credentials provided in the previous level. You’re using SSH with a specific port (2223). Nothing tricky here—it’s just your way in.
+________________
+
+
+📁 Step 2: Explore What's Available
+You run ls -alh to see what files are in your home directory. You’re looking for anything that might help. You find a file named printfile, which is likely the key to moving forward.
+________________
+
+
+🔍 Step 3: Try Running printfile
+You try executing printfile by itself. This probably gives you an error or usage instructions. It's a clue that the program expects a filename as an argument.
+At this point, you know:
+                                                                                                                                          * printfile wants a file path
+
+                                                                                                                                          * You might be able to exploit how it handles that path
+
+________________
+
+
+🧪 Step 4–5: Create a Temporary Directory
+You use mktemp -d to make a safe, random, writable temp directory where you can experiment freely without permissions issues.
+Then you go into that directory with cd.
+This is your little sandbox to safely test the behavior of printfile.
+________________
+
+
+🪤 Step 6: Create a Specially-Named File
+Here’s where things get clever.
+You create a file with a tricky name: file;bash
+ Step 7: Check It Worked
+You list the files to make sure the oddly named file is there. Just confirming.
+________________
+
+
+🏠 Step 8: Go Back to Your Home
+You return to your home directory to execute the printfile command from there, still pointing to the tricky file.
+________________
+
+
+🧨 Step 9–10: Exploit the Program
+Now you run printfile and pass it the path to your specially named file.
+If printfile is vulnerable (and it is!), it interprets your input in a way that spawns a shell with leviathan2’s permissions—but crucially, it’s being run with the permissions of the owner of printfile, which is leviathan3.
+Now you're in a shell as leviathan3.
+You can now read the protected file that contains the leviathan3 password.
+  
+
+
+
+Drive link:
+https://drive.google.com/drive/folders/1TV_g2a5HKKvlYGXfYbCtWr9a9u417u0j?usp=sharing
+Level 3
+1. Connecting to the server
+The first thing you did was connect to a remote Linux machine via a secure protocol (SSH). Each level gives you access to a different user account with limited permissions, forcing you to explore the environment for clues or vulnerabilities.
+2. Listing files in the directory
+Once you're connected, you checked what files or programs are available. These files often include a special program designed for the level. In this case, there was a binary (an executable file) that you can run. That file is the core of this challenge.
+3. Running the program
+When you tried running the program, it likely asked for some kind of input (like a password or a string). If you didn’t know what it was expecting, you would just see a response like "Access Denied" or something similar.
+4. Investigating the binary with a tracing tool
+Since you didn't have the source code, you used a dynamic analysis tool to watch how the program behaves when it runs. Specifically, you watched which library functions the program calls and what files or strings it interacts with.
+Here’s where the magic happens:
+                                                                                                                                             * This tool helps you see if the program is trying to compare your input to a hardcoded password or maybe read a specific file.
+
+                                                                                                                                             * For this level, the tool revealed that the program checks for a particular string (a password), and this string is actually visible in the output of the tracing process. That’s a key vulnerability—because instead of hiding the password securely, the program inadvertently exposes it.
+
+5. Using the discovered password
+With the correct password found through the trace, you used it to access the file that contains the next level’s credentials. These are stored in a specific directory on the server, and each level has permission to read only the password for the next one.
+6. Final confirmation
+After successfully reading that file, you now have the password for leviathan4. You can use it to SSH into the next level and continue the challenge.
+  
+
+
+
+Drive link
+https://drive.google.com/drive/folders/1VlZLYobepViDaliFD1qzxzd_vYY0EYM5?usp=sharing
+Level 4
+Step 1: SSH into the server
+You’re connecting to a remote machine hosted by OverTheWire. You do this using SSH (Secure Shell), which lets you access another machine’s command line securely. The port you're connecting to is non-standard (2223 instead of the usual 22), which is a small security-through-obscurity trick.
+Once connected, you're logged in as leviathan4, and your goal is to find the password for leviathan5.
+________________
+
+
+📁 Step 2: Listing files with ls -alh
+The first thing you do in any Linux box—look around. This command lists all files, including hidden ones (those starting with a dot), and shows detailed information like permissions, owners, file sizes, and timestamps. The -h part just makes file sizes "human-readable" (like KB or MB instead of bytes).
+This helps you identify if there’s anything unusual or interesting in the home directory of leviathan4.
+________________
+
+
+🗑️ Step 3: Navigating into .trash
+A hidden directory called .trash exists in this level. On Linux systems, .trash is often used as a place to store deleted files (kind of like a Recycle Bin), but it can also just be any regular folder. In this case, it’s a hidden folder likely put here intentionally as part of the challenge.
+So, you explore inside it, hoping there’s something useful—or something that’s meant to be hidden.
+________________
+
+
+🗃️ Step 4: Discovering and running bin
+Inside .trash, you find a file named bin. Now here’s the interesting part:
+In Unix-like systems, the word “bin” often refers to binary executables—compiled programs that can be run directly from the command line.
+This file isn't a script or a text file. It’s a compiled program, likely created just for this challenge. When you execute it, it runs something.
+The behavior of this binary (which you discover by running it) is key. Based on the name and usual challenge design, it might:
+                                                                                                                                                * Ask for a password
+
+                                                                                                                                                * Hide output
+
+                                                                                                                                                * Only print something when certain input is given
+
+                                                                                                                                                * Check the environment, file permissions, or internal logic to decide what to output
+  
+The key idea is: this binary behaves differently depending on how it's used, and its goal is to hide the pass  
+Drive link:
+https://drive.google.com/drive/folders/1VlZLYobepViDaliFD1qzxzd_vYY0EYM5?usp=sharing
+
+
+Level 5
+. Login to the target machine
+You're connecting to the OverTheWire game server using the username and port specific to Leviathan level 5. Once you're logged in, you're in a limited shell environment with access to specific files, including a mysterious binary executable named leviathan5.
+________________
+
+
+2. Check the directory contents
+Once inside, you look around and see the files that belong to the current user. The important file here is a binary executable named after the level: leviathan5. This is the file you'll need to analyze and interact with to find the next password.
+________________
+
+
+3. Run the binary
+You try running the program to see what it does. When you run it, it likely asks for a filename and tries to open or read that file. But if the file doesn't exist, it fails or exits with a message.
+So clearly, the program is expecting to work with a file in some way—probably reading something from it.
+________________
+4. Analyze the binary’s behavior
+You use a tool that can trace the function calls the program makes when it runs. This is helpful because you get to see which system-level functions it uses and how it interacts with your input.
+From the trace output, you notice that:
+                                                                                                                                                   * It opens a file (you probably typed the name of the file).
+
+                                                                                                                                                   * It reads a string from that file.
+
+                                                                                                                                                   * Then it compares that string with a hidden value.
+
+                                                                                                                                                   * If the string matches the hidden value, something different happens—maybe it shows you the password for the next level.
+
+This gives you a clue that the binary is looking for a specific string input in a file, and if you give it that exact string, it will reveal the next password.
+________________
+
+
+5. Create the file the program expects
+So now, you decide to create a file with a name of your choice, something simple and temporary. Inside that file, you write the exact string the binary is looking for. How do you know what string to use? You saw it earlier in the program’s trace—it compared the file contents to this exact value.
+Once you’ve made the file and placed the correct string inside, you run the binary again and give it the name of your file.
+________________
+
+
+6. Success!
+This time, the binary doesn't complain. Instead, it prints out a message that includes the password for leviathan6.
+In your case, that password is:
+szo7HDB88w
+  
+
+
+
+Drive link:
+https://drive.google.com/drive/folders/1pVI1ioEW1ZTsq1ksDpsKRWZAwOq8aMw1?usp=sharing
+Level 6
+
+
+Accessing the Remote Machine (SSH): At the start, you are asked to SSH into a remote server with a specified port. This is typically the first step in most challenges, where you authenticate with the server using credentials provided for the level. Once logged in, you're given access to a restricted environment that usually limits what you can do.
+
+Running the Executable (./leviathan6): The command ./leviathan6 typically refers to an executable file. By running this, you start the main program that you need to analyze. In this case, it likely has some functionality that either directly or indirectly relates to the puzzle at hand. This step doesn't give you the password right away; it just runs the application that you need to investigate.
+
+Tracing with ltrace: ltrace is a tool used to trace library calls made by a program. When you run ltrace ./leviathan6, you are essentially observing the system calls that the program is making when it runs. This is useful for debugging or understanding how the program interacts with the underlying system. In the context of a puzzle like this, ltrace might reveal key insights, such as specific library functions being called (for example, cryptographic functions, system calls for file handling, or anything else that can hint at vulnerabilities or solutions).
+
+Brute-Force the Password: A common method used in security challenges is brute-forcing a password. The approach here suggests iterating through a range of numbers, from 0000 to 9999, and attempting each one as an argument to the executable (./leviathan6). This is often done when you suspect that the password is something predictable, like a numeric PIN, and you're trying every possibility. The for loop in this case automates the process of trying all combinations. While this step might seem tedious, it’s an approach often used to try to crack simple password schemes.
+
+Accessing the Password File: The command cat /etc/leviathan_pass/leviathan7 is likely the final step in the puzzle. This command would display the contents of a file containing the password for the next level (in this case, the password for "leviathan7"). However, you would need to have the correct password or a means of bypassing any security restrictions to access this file. The password for the next level is stored in a system file, which suggests that previous steps (like brute-forcing or analyzing the program with ltrace) might have been necessary to unlock or access this file.
+
+Listing Files with ls: The ls command is used to list the contents of a directory. It is often employed in the later stages of a puzzle to see if you can spot any files that may be important for solving the challenge. In this case, it's not the main focus, but it may reveal additional clues or files that are relevant to the puzzle.
+  
+
+
+
+Drive link:
+https://drive.google.com/drive/folders/1zH18iSFimloTEY-Su37MxfZ2A13vAwtt?usp=sharing
+Level 7
+                                                                                                                                                      1. SSH Access: The first step requires you to connect to the remote server using SSH. The username is leviathan7, and the host is leviathan.labs.overthewire.org with a specific port number 2223. Once you connect to the server, you'll be given access to a shell where you can run commands and explore the system.
+
+                                                                                                                                                      2. List Directory Contents: After connecting, you run ls to list the files in the current directory. This is a common first step to get an idea of what files are available and where you might focus your attention. You might find files that are critical for solving the puzzle.
+
+                                                                                                                                                      3. Detailed Directory Listing: Running ls -alh gives you a more detailed list of files and directories. It shows hidden files, file permissions, ownership details, sizes, and modification times. You’re specifically looking for anything unusual or something that might hint at the next step in the challenge.
+
+                                                                                                                                                      4. Run the CONGRATULATIONS File: By executing ./CONGRATULATIONS, you might see some output. Typically, in these types of challenges, files named like this could be a clue, a step to reveal the next puzzle, or a means to confirm that you’ve completed the previous part of the challenge. The file might be a script or a binary, and executing it can help you progress.
+
+                                                                                                                                                      5. Read the CONGRATULATIONS File: Using cat CONGRATULATIONS, you’ll reveal the content of the file. This file will likely contain critical information or a message that serves as the next clue or step for you to continue in the puzzle. This could be a direct message indicating that you've completed the level or perhaps something more subtle that you need to interpret.
+
+  
+
+
+
+Drive link
+https://drive.google.com/drive/folders/1IWL3k2YLyJm3dZz7EkhXo6H75uxT7Mps?usp=sharing

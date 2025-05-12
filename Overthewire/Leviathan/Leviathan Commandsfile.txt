@@ -1,0 +1,81 @@
+Leviathan
+
+lvl0=
+1.ssh leviathan0@leviathan.labs.overthewire.org -p 2223
+2. ls -alh
+3. cd .backup
+4. grep password bookmarks.html
+
+Password=3QJ3TgzHDq
+----------------------------------------------------------------------------------
+lvl1=
+1.ssh leviathan1@leviathan.labs.overthewire.org -p 2223
+2. ./check
+3.ltrace ./check
+4. cat /etc/leviathan_pass/leviathan2
+5.ls
+
+Password=NsN1HwFoyN
+---------------------------------------------------------------------------------
+lvl2=
+1.ssh leviathan2@leviathan.labs.overthewire.org -p 2223
+2.ls -alh
+3. ./printfile
+4.mktemp -d
+5. cd /tmp/tmp.M6h49VZ90a
+6.touch 'file;bash'
+7.ls
+8.cd
+9. cat /etc/leviathan_pass/leviathan3
+10. ./printfile /tmp/tmp.M6h49VZ90a/file\;bash
+
+Password=f0n8h2iWLP
+----------------------------------------------------------------------------------
+lvl3=
+1.ssh leviathan3@leviathan.labs.overthewire.org -p 2223
+2. ls -alh
+3. ./level3
+4. ltrace ./level3
+5.cat /etc/leviathan_pass/leviathan4
+6.ls
+
+Password=WG1egElCvO
+----------------------------------------------------------------------------------
+lvl4=
+1.ssh leviathan4@leviathan.labs.overthewire.org -p 2223
+2.ls -alh
+3.cd .trash
+4. ./bin
+
+Password=0dyxT7F4QD
+----------------------------------------------------------------------------------
+lvl5=
+1.ssh leviathan5@leviathan.labs.overthewire.org -p 2223
+2.ls -alh
+3. ./leviathan5
+4. ltrace ./leviathan5
+5.touch /tmp/file.log ; echo "hello" > /tmp/file.log
+6.ls
+
+Password=szo7HDB88w
+----------------------------------------------------------------------------------
+lvl6=
+1.ssh leviathan6@leviathan.labs.overthewire.org -p 2223
+2. ./leviathan6
+3.ltrace ./leviathan6
+4. for i in {0000..9999} ;do echo $i;./leviathan6 $i;done;
+5. cat /etc/leviathan_pass/leviathan7
+6.ls
+
+Password=qEs5Io5yM8
+-----------------------------------------------------------------------------------
+lvl7=
+1.ssh leviathan7@leviathan.labs.overthewire.org -p 2223
+2.ls
+3.ls -alh
+4. ./CONGRATULATIONS
+5. cat CONGRATULATIONS
+
+Last Message of leviathan lab=Well Done, you seem to have used a *nix system before, now try something more serious.
+(Please don't post writeups, solutions or spoilers about the games on the web. Thank you!)
+------------------------------------------------------------------------------------------------------------------------------------------

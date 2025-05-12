@@ -1,0 +1,167 @@
+NATAS:
+
+lvl0=
+Password=0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq
+-----------------------------------------------------------------------------------
+lvl1=
+Password=TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI
+-----------------------------------------------------------------------------------
+lvl2=
+Password=3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+-----------------------------------------------------------------------------------
+lvl3=
+Password=QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+-----------------------------------------------------------------------------------
+lvl4=
+Password=0n35PkggAPm2zbEpOU802c0x0Msn1ToK
+-----------------------------------------------------------------------------------
+lvl5=
+Password=0RoJwHdSKWFTYR5WuiAewauSuNaBXned
+-----------------------------------------------------------------------------------
+lvl6=
+Password=bmg8SvU1LizuWjx3y7xkNERkHxGre0GS
+-----------------------------------------------------------------------------------
+lvl7=
+Password=xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q
+-----------------------------------------------------------------------------------
+lvl8=
+Tools:
+1.hex to ascii converter
+2.text reverser
+3.base64 decoder
+
+Password=ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t
+-----------------------------------------------------------------------------------
+lvl9=
+cmds:
+1.;ls ../../../../../etc/natas_webpass
+2.;cat ../../../../../etc/natas_webpass/natas10
+
+Password=t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu
+-----------------------------------------------------------------------------------
+lvl10=
+cmds:
+1. a /etc
+2. d /etc/natas_webpass/natas11
+
+Password:UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk
+-----------------------------------------------------------------------------------
+lvl11=
+Base64 cookie encode value=HmYkBwozJw4WNyAAFyB1VUcqOE1JZjUIBis7ABdmbU1GIjEJAyIxTRg=
+cipher text=f$ 
+3'7 
+Key=eDWo
+xor to base64 output=HmYkBwozJw4WNyAAFyB1VUc9MhxHaHUNAic4Awo2dVVHZzEJAyIxCUc5
+Plain text={"showpassword":"no","bgcolor":"#ffffff"}
+
+Password=yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB
+----------------------------------------------------------------------------------
+lvl12=
+Tools used=Php storm
+
+Password=trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC
+----------------------------------------------------------------------------------
+lvl13=
+
+Password=z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ
+----------------------------------------------------------------------------------
+lvl14=
+
+Password=SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
+----------------------------------------------------------------------------------
+lvl15=
+Tools used=
+1.Idle Python 
+
+Password=hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
+----------------------------------------------------------------------------------
+lvl16=
+Tools used=
+1.Idle python
+
+Password=EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+----------------------------------------------------------------------------------
+lvl17=
+Tools used=
+1.Idle python
+
+Password=6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
+----------------------------------------------------------------------------------
+lvl18=
+Tools used=
+1.Idle python
+
+Password=tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr
+----------------------------------------------------------------------------------
+lvl19=
+Tools used=
+1.Idle python
+
+Password=p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw
+----------------------------------------------------------------------------------
+lvl20=
+
+Password=BPhv63cKE1lkQl04cE5CuFTzXe15NfiH
+----------------------------------------------------------------------------------
+lvl21=
+Tools used=
+1.Idle Python
+
+Password=d8rwGBl0Xslg3b76uh3fEbSlnOUBlozz
+----------------------------------------------------------------------------------
+lvl22=
+Tools used=
+1.Idle Python
+
+Password=dIUQcI3uSus1JEOSSWRAEXBG8KbR8tRs
+----------------------------------------------------------------------------------
+lvl23=
+Byguessing
+
+Password=MeuqmfJ8DDKuTr5pcvzFKSwlxedZYEWd
+----------------------------------------------------------------------------------
+lvl24=
+
+Password=ckELKUWZUfpOv6uxS6M7lXBpBssJZ4Ws
+----------------------------------------------------------------------------------
+lvl25=
+
+Password=cVXXwxMS3Y26n5UZU89QgpGmWCelaQlE
+----------------------------------------------------------------------------------
+lvl26=
+
+Password=u3RRffXjysjgwFU6b9xa23i6prmUsYne 
+----------------------------------------------------------------------------------
+lvl27=
+
+Password=1JNwQM1Oi6J6j1k49Xyw7ZN6pXMQInVj 
+----------------------------------------------------------------------------------
+lvl28=
+Tools used=Idle Python
+
+Password=31F4j3Qi2PnuhIZQokxXk1L3QT9Cppns
+----------------------------------------------------------------------------------
+lvl29=
+
+Password=WQhx1BvcmP9irs2MP9tRnLsNaDI76YrH
+----------------------------------------------------------------------------------
+lvl30=
+
+Password=m7bfjAHpJmSYgQWWeqRE2qVBuMiRNq0y
+----------------------------------------------------------------------------------
+lvl31=
+
+Password=NaIWhW2VIrKqrc7aroJVHOZvk3RQMi0B
+----------------------------------------------------------------------------------
+lvl32=
+
+Password=2v9nDlbSF7jvawaCncr5Z9kSzkmBeoCJ
+----------------------------------------------------------------------------------
+lvl33=
+
+Password=
+----------------------------------------------------------------------------------
+lvl34=
+
+Password=
+----------------------------------------------------------------------------------

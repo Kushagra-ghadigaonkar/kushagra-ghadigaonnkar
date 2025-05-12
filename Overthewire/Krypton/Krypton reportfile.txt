@@ -1,0 +1,518 @@
+﻿Intern Name: Kushagra Ghadigaonkar         10 =Solved krypton lab,leviathan lab and
+                                                                        Helped for natas lab
+                  Anand Khandare                22 =Solved natas lab
+                 Sunny Patekar                 39 =made the Documentation of all labs
+Program: Digisuraksha Parhari Foundation Internship 
+Issued By: Digisuraksha Parhari Foundation 
+Supported By: Infinisec Technologies Pvt. Ltd. 
+Report Submission Date: 28 April 2025
+
+
+For Orginal Doc link:
+https://docs.google.com/document/d/197LCNmeNyc9RwR-wt_Nqua5ylSxoLhOvo-gqXSuOjqk/edit?usp=sharing
+
+
+
+
+
+
+             Cybersecurity assignment 2
+
+
+
+
+(OverTheWire Krypton Levels)
+
+
+Level 0:
+
+
+Step-by-Step Process:
+        1.        Base64 Decoding
+        •        You were given a Base64 encoded string:
+
+
+echo 'S1JZUFRPTklTUkVBVCE=' | base64 -d
+
+
+
+
+        •        Decoded Password:
+
+
+KRYPTONISGREAT
+
+
+
+
+        2.        SSH Login
+        •        Using the decoded password, you tried logging into the game server:
+
+
+ssh krypton1@krypton.labs.overthewire.org -p 2231
+
+
+
+
+        •        Password used: KRYPTONISGREAT
+
+
+        3.        Exploring the System
+        •        Navigated to /krypton/ directory.
+        •        Listed folders: krypton1, krypton2, …, krypton7.
+        4.        Level Hints
+        •        Inside krypton1, you read the README file:
+
+
+cat README
+
+
+
+
+        •        Instructions revealed:
+        •        Password for Level 2 is in the file krypton2.
+        •        It’s encrypted using ROT13 cipher.
+        •        Ciphertext is grouped into 5-letter clusters.
+
+
+Tools Used:
+        •        Base64 Command (base64 -d)
+        •        SSH Client (Windows CMD + OpenSSH)
+        •        Linux Commands (cd, ls, cat)
+Logic:
+        •        Base64 is a common encoding; decoding it reveals plaintext.
+        •        ROT13 is a simple cipher that rotates each letter by 13 positions.
+        •        Understanding of basic Linux navigation and file operations.
+
+
+
+
+
+
+  
+
+
+
+
+
+Drive link https://drive.google.com/drive/folders/13Og5gYxY-N9arX7D6w0MalwcZHSsAGkD?usp=sharing
+
+
+
+
+Level 1 
+
+
+ Step 1: Understand Rotation Cipher
+What is a Rotation Cipher?
+A rotation cipher (aka Caesar cipher) shifts each letter in the plaintext by a fixed number of positions in the alphabet.
+For example:
+* If the shift is +3, then:
+
+   * A → D
+
+   * B → E
+
+   * C → F
+
+   * ...
+
+   * Z → C (it wraps around after Z)
+
+So the plaintext hello becomes khoor with a +3 shift.
+This kind of cipher is very simple and easy to break, especially when the message is long or has recognizable words.
+________________
+
+
+Step 2: Understand Ciphertext Format
+What's meant by "non-standard ciphertext format"?
+Typically, when people encrypt messages using rotation ciphers (or other classical ciphers), they make it harder to read by removing word boundaries and grouping letters into blocks.
+
+
+
+
+
+
+
+
+
+
+Step 3: Crack the Cipher
+How do we break it?
+There are only 25 possible shifts (not counting a shift of 0, which leaves the text unchanged), so you can try all possible shifts until the message becomes readable English. This is called a brute-force attack.
+Step 4: Implementing the Decryption (Manually or with a Script)
+You can either:
+      * Use a Caesar cipher decryption tool online.
+
+      * Write a small script in Python (or another language).
+
+      * Do it manually by trying each shift.
+
+
+Step 5: Find the password   
+Drive link 
+https://drive.google.com/drive/folders/13hZN8b2l5SPPL9RuzZfuU05Gx1Ukywh2?usp=sharing
+
+
+Level 2
+Understanding the Krypton Level 2 to 3 Challenge
+This level revolves around decrypting a message that’s been encoded using a Caesar Cipher. A Caesar Cipher is a type of monoalphabetic substitution cipher — meaning each letter in the plaintext is replaced by another letter a fixed number of positions away in the alphabet.
+________________
+
+
+🧠 Key Ideas in the Challenge
+         1. The file named krypton3 contains a secret message, broken into 5-letter ciphertext groups.
+
+         2. You are told it's encrypted with a Caesar cipher, but you don’t directly know the key (how many positions the letters are shifted).
+
+         3. However, you have access to an encrypting tool, which uses the same unknown key.
+
+         4. The trick is: if you encrypt something you know, and compare it to the ciphertext, you can reverse-engineer the key.
+
+________________
+
+
+🧩 Understanding the Decryption Logic (Mentally Parsing the Code)
+Even though you asked for no code, the logic behind the provided Python snippet is key to understanding how Caesar cipher decryption works.
+🔡 Characters and ASCII
+Each character (like 'a' or 'Z') has an underlying ASCII value — a numerical code computers use to represent text. This decryption process is working with those ASCII values to reverse the Caesar shift.
+Here’s the conceptual breakdown:
+            * The script reads the encrypted string character by character.
+
+            * It then checks which range of the alphabet the character falls into:
+
+               * For example, uppercase letters A–Z are ASCII 65–90.
+
+               * Lowercase letters a–z are ASCII 97–122.
+
+                  * The Caesar cipher used here splits these ranges further:
+
+                     * From A–L and M–Z (or a–l and m–z).
+
+                     * Then, depending on which half the letter is in, it applies a different logic to decode:
+
+                        * In one half, it adds 14 to shift it back.
+
+                        * In the other, it subtracts 12.
+
+This system is essentially reversing a Caesar cipher where the original encryption probably shifted letters by 12 or 14 places, but wrapped around at the end of the alphabet. For example:
+                           * If a became o (a shift of 14), to decode, you’d subtract 14.
+
+                           * If z became n, you'd reverse that by adding 12 — staying within the alphabet range.
+
+This splitting is probably done to handle alphabet wraparound: making sure that letters near the end of the alphabet still map properly when shifted forward or backward.
+________________
+
+
+📌 What's the Takeaway?
+                              * The message is encrypted with a Caesar cipher, and the decryption works by reversing the shift.
+
+                              * The ASCII-based checks help determine how to reverse the shift for each letter depending on where it falls in the alphabet.
+
+                              * The reason for different shift directions in different ranges is to keep the letters within the valid alphabet range after shifting.
+
+                              * This is a custom Caesar cipher, not a standard ROT13, because the shift values (12 and 14) aren't symmetric — it's been crafted to decrypt this specific encoding style.
+
+                              * The challenge itself encourages you to explore the behavior of the encrypt tool to deduce the cipher key and reverse it logically.
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+Drive link
+https://drive.google.com/drive/folders/1aLuulT_5-wT-_23StqQ99QmqjaP8KOIa?usp=sharing
+
+
+Level 3
+
+
+What Is Going On Here?
+You're dealing with an encrypted message using a monoalphabetic substitution cipher, where each letter in the plaintext is replaced with a different letter to create the ciphertext. Crucially:
+                                 * The same cipher key was used for all intercepted messages (found1, found2, found3, and krypton4).
+
+                                 * You don’t know the cipher mechanism (unlike the previous level).
+
+                                 * But you do have multiple ciphertexts, which is a huge advantage in cracking the cipher.
+
+                                 * The plaintext is known to be in American English, which helps with frequency assumptions.
+
+________________
+
+
+🧩 The Strategy: Frequency Analysis
+Because the encryption uses the same key, you can combine all three intercepted messages into one big ciphertext sample. That makes it easier to perform a frequency analysis, a classic cryptanalysis technique where you count how often each letter appears in the ciphertext and then compare those frequencies to what you'd expect in typical English text.
+Why Frequency Analysis Works:
+In English:
+                                    * E is the most common letter,
+
+                                    * followed by T, A, O, N, I, S, R, H...
+
+                                    * Less common letters include Z, Q, X, J.
+
+By comparing the most frequent letters in the ciphertext with this expected frequency pattern, you can make an educated guess about what ciphertext letters map to which plaintext letters.
+________________
+
+
+📊 What You Did: Step-by-Step Explanation
+                                       1. Read the Ciphertexts: You gathered all the intercepted messages (found1, found2, found3) and combined them into one long string called found.
+
+                                       2. Count Each Letter: You looped through each character in the combined ciphertext and counted how many times each letter appeared.
+
+                                          * This gave you a dictionary showing how frequently each letter appeared in the ciphertext.
+
+                                          * You ignored whitespace and other non-letter characters.
+
+                                             3. Sort Letters by Frequency: You sorted the dictionary from the most frequent to least frequent letters.
+
+                                                * This gave you a list of ciphertext letters ordered by how often they appear.
+
+                                                   4. Create a Substitution Key: You made a list of the most common letters in English (E, A, T, S...) and matched them up with the most frequent ciphertext letters.
+
+                                                      * The most frequent ciphertext letter is guessed to be E, second most as A, and so on.
+
+                                                         5. Apply the Substitution: You used your guessed substitution key to decrypt a specific message (KSVVW BGSJD SVSIS VXBMN YQUUK BNWCU ANMJS).
+
+                                                            * Each letter in the ciphertext was replaced with the corresponding guessed letter from your frequency map.
+
+                                                            * Spaces were preserved to make the result more readable.
+
+________________
+
+
+🧠 What Makes This a Good Strategy
+                                                               * Repeated Cipher Key: Because all messages use the same cipher key, the more data you have, the better your frequency analysis will be.
+
+                                                               * No Known Plaintext Needed: This approach works even without knowing the original plaintext, which mimics real-world cryptanalysis.
+
+                                                               * Scalability: The more ciphertexts you have, the more accurate your guesses about frequency become.
+
+________________
+
+
+🚧 Limitations and Next Steps
+                                                                  * Frequency analysis gives guesses, not guarantees. It might not be 100% accurate.
+
+                                                                  * Some words may not make sense at first, requiring refinement of the substitution key.
+
+                                                                  * Next, you might:
+
+                                                                     * Use bigrams or trigrams (common two/three-letter combinations like TH, HE, ING) to improve accuracy.
+
+                                                                     * Look for word patterns (e.g., THE, AND, YOU).
+
+                                                                     * Try partial decryptions and tweak your mapping based on context.
+
+________________
+
+
+🧩 The Decryption Output
+The final part of your process uses your guessed key to decrypt the given string. The result may not be perfect English yet, but if your frequency analysis was good, you should see enough recognizable words to adjust your key and fully crack the message.
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+Drive link
+https://drive.google.com/drive/folders/10i_YKHTOH_OvOSMAo4IqYt6MpogktHeh?usp=sharing
+
+
+Level 4 
+You are working on a Krypton Challenge that uses the Vigenère cipher, a classical encryption technique. In previous levels, you used simpler substitution ciphers. Now, this challenge is more complex because Vigenère is a polyalphabetic cipher. That means it doesn't just use one alphabet to encrypt — it uses several, depending on a repeating key.
+You are given:
+                                                                        * A ciphertext (long encrypted message).
+
+                                                                        * The key length, which is 6.
+
+                                                                        * The goal is to recover the key and decrypt the message.
+
+________________
+
+
+🔎 Step-by-Step Python Logic (Explained in Plain English)
+________________
+
+
+✅ Step 1: Understand Vigenère Cipher
+The Vigenère Cipher works by:
+                                                                           * Taking a plaintext message and a key.
+
+                                                                           * Repeating the key until it matches the length of the message.
+
+                                                                           * For each letter in the message, it is shifted forward in the alphabet by the position of the corresponding key letter.
+
+                                                                           * Example: If the plaintext is "A" and the key is "B", then the ciphertext is "B" because "A" + 1 = "B".
+
+Decryption is just the reverse:
+                                                                              * Subtract the key letter instead of adding it.
+
+________________
+
+
+✅ Step 2: Isolate Characters by Key Position
+You know the key has a length of 6. That means every 6th letter is encrypted with the same key letter.
+So you are:
+                                                                                 * Looping through the entire ciphertext.
+
+                                                                                 * Extracting every character that was encrypted with the second letter of the key (because shift = 1, which is the second position due to 0-based indexing).
+
+                                                                                 * This gives you a string of characters that were all encrypted using the same Caesar shift.
+
+Why? Because if a key is 6 letters long, then all letters at positions like 1, 7, 13, 19, etc., were shifted using the same letter of the key.
+So this part is you grouping letters by their key-letter position to prepare for frequency analysis.
+________________
+
+
+✅ Step 3: Frequency Analysis
+Now that you have all the characters that were encrypted using the same Caesar shift, you want to figure out what that shift is.
+So you:
+                                                                                    * Count the frequency of each letter in that group.
+
+                                                                                    * This is based on the assumption that in English, some letters occur more frequently — like 'E', 'T', 'A', 'O'.
+
+                                                                                    * By comparing the most frequent letters in your ciphertext group to standard English letter frequencies, you can guess what the shift is.
+
+This is a classical technique in cryptanalysis. The idea is:
+                                                                                       * If 'Y' shows up the most in the encrypted group, and you know 'E' is the most common letter in English, maybe 'Y' corresponds to 'E'.
+
+                                                                                       * So you calculate: how do I shift 'Y' back to become 'E'?
+
+                                                                                       *  
+
+
+This difference becomes your Caesar shift for that position of the key.
+________________
+
+
+✅ Step 4: Decrypt the Full Message
+Once you guess the key (in this case, let’s say you figured out it's FREKEY), you can now decrypt the entire ciphertext.
+You do this by:
+                                                                                          * Looping through every letter of the ciphertext.
+
+                                                                                          * For each character, use the corresponding character of the key (repeating as necessary).
+
+                                                                                          * Subtract the key character's index in the alphabet from the ciphertext character’s index.
+
+                                                                                          * Wrap around using modulo 26 to stay within the A-Z range.
+
+                                                                                          * This gives you the original plaintext letter.
+
+You build this decrypted message one character at a time.
+________________
+
+
+🧠 Summary of Concepts You Used
+                                                                                             * Vigenère Cipher: Uses a repeating key to shift letters in a polyalphabetic way.
+
+                                                                                             * Key Length Knowledge: Knowing the length lets you treat the cipher as multiple Caesar ciphers.
+
+                                                                                             * Frequency Analysis: A powerful tool in classical cryptography. It lets you guess which letter in ciphertext maps to common English letters.
+
+                                                                                             * Modulo Arithmetic: Used for both encryption and decryption to wrap around the 26 letters of the alphabet.
+
+                                                                                             * Pattern Recognition: Helps identify likely keys based on letter distributions.
+
+
+  
+
+
+
+  
+
+Drive link
+https://drive.google.com/drive/folders/1qR5kCrcGFlzQAlJCgd0ebFiHPwckbWpd?usp=sharing
+
+
+Level 5
+
+
+                                                                                                1. Polyalphabetic Cipher: This type of cipher uses multiple substitution alphabets to encrypt the message, meaning the same plaintext letter can be encrypted into different ciphertext letters depending on its position in the message. A well-known example is the Vigenère cipher, which uses a key to determine how each letter is substituted.
+
+                                                                                                2. Unknown Key Length: In the problem, we are dealing with a polyalphabetic cipher, but the length of the key is unknown. This makes it more challenging to directly apply common decryption methods since many of those depend on knowing or guessing the key length.
+
+                                                                                                3. American English: This indicates that the text is in standard American English, which might help with certain decryption techniques, as we can rely on language patterns, frequencies, and word structures typical of English.
+
+General Steps to Approach
+                                                                                                   1. Friedman Test or Kasiski Examination: To decrypt a polyalphabetic cipher with an unknown key length, you can begin by analyzing the ciphertext for repeating patterns. The Kasiski examination helps identify repeated sequences of characters, which likely correspond to the same key letters (due to the polyalphabetic nature). The distance between these repeated patterns can give clues about the key length. The Friedman Test can also help estimate the key length based on the frequency of characters in the ciphertext.
+
+                                                                                                   2. Frequency Analysis: Even though it's a polyalphabetic cipher, frequency analysis can still be useful. If you suspect a particular key length, you can divide the ciphertext into different groups (based on key length). Once you have these groups, you can apply frequency analysis to each group. For instance, the first group will contain every nth letter of the ciphertext (where n is the key length), and you can check if the frequency distribution of letters in each group resembles typical English letter distributions.
+
+                                                                                                   3. Use Known English Patterns: After identifying a likely key length and performing frequency analysis, you can begin making educated guesses about possible letters in the key. For example, English text often contains certain common letter pairings and structures (like "th," "he," or "the"). Knowing these patterns can give you clues to the ciphertext's meaning, making it easier to deduce the key or parts of it.
+
+                                                                                                   4. Test and Adjust: Once you have a suspected key (or key length), you can decrypt parts of the message and see if the resulting plaintext makes sense. If not, you adjust the key and try again, until you find the correct one that results in readable English.
+  
+
+
+
+
+
+  
+
+Drive link
+https://drive.google.com/drive/folders/1HyHV7caZw2s7WMJdEFz49z5Qnac9biCa?usp=sharing
+
+
+Level 6
+ Understanding the Encryption Logic
+Let’s start with the idea behind the encryption. The message was encrypted using a method where:
+                                                                                                      * Each letter of the plaintext (original message) was combined with a letter from the key using modular arithmetic.
+
+                                                                                                      * The most common operation in this kind of cipher is XOR for binary, but since you're working with letters (A–Z), the encryption works like this:
+
+                                                                                                         * Map letters A–Z to numbers 0–25.
+
+                                                                                                         * Add the plaintext letter and the key letter (in their number forms).
+
+                                                                                                         * Take the result modulo 26 (so it wraps around A–Z).
+
+                                                                                                         * Convert the number back to a letter.
+
+For example:
+P (15) + E (4) = 19 → T
+To decrypt, you just reverse that:
+                                                                                                            * Convert both the cipher letter and the key letter to their number equivalents.
+
+                                                                                                            * Subtract the key from the cipher letter.
+
+                                                                                                            * Add 26 (to avoid negative numbers), then take mod 26.
+
+                                                                                                            * Convert the result back into a letter.
+
+________________
+🔑 Why This Works
+This works because you're using modular arithmetic on the 26 letters of the alphabet. It's like a looped number line from 0 to 25. When encrypting, you rotate forward by the key amount. When decrypting, you rotate backwards by the same amount.
+                                                                                                               * A cipher_text: the encrypted message.
+
+                                                                                                               * A key_text: a string of letters
+                                                                                                               *  (the keystream), likely the same length as the cipher.
+
+                                                                                                               * You need to recover the original message (the decrypt_text), knowing both of these.
+
+Because the key is known, this is called a known key attack — it’s not about cracking the key, but just reversing the encryption process.
+________________
+💡 Real-Life Analogy
+Imagine you had a secret code where every letter in your message is shifted by a value that comes from another list (the key). You know both the encrypted message and that list of shifts, and you’re just trying to “undo” each shift to recover the original message.
+________________
+🧩 Final Result
+By reversing each individual letter using the method described, you'll slowly rebuild the entire original message.
+This is a perfect example of a symmetric cipher, where the same key is used to encrypt and decrypt, and also a great demonstration of how insecure simple substitution methods can be if the key or algorithm isn’t strong enough or is reused.
+
+Drive link
+https://drive.google.com/drive/folders/1E93Fkt0_866olIa3aU1yiXU8W5gRJ29E?usp=sharing

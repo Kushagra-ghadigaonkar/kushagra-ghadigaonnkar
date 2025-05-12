@@ -1,0 +1,1816 @@
+﻿Intern Name: Kushagra Ghadigaonkar         10 =Solved krypton lab,leviathan lab and
+                                                                        Helped for natas lab
+                  Anand Khandare                22 =Solved natas lab
+                 Sunny Patekar                 39 =made the Documentation of all labs
+Program: Digisuraksha Parhari Foundation Internship 
+Issued By: Digisuraksha Parhari Foundation 
+Supported By: Infinisec Technologies Pvt. Ltd. 
+Report Submission Date: 28 April 2025
+
+
+For Orginal Doc link:
+https://docs.google.com/document/d/197LCNmeNyc9RwR-wt_Nqua5ylSxoLhOvo-gqXSuOjqk/edit?usp=sharing
+
+
+             							Cybersecurity assignment 2
+
+NATAS
+
+
+Level 0:
+
+
+Objective:
+Understand how websites can hide important data inside HTML code.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas0.natas.labs.overthewire.org
+
+
+Authentication:
+When prompted, use:
+
+
+Username: natas0
+
+
+Password: natas0
+
+
+Analyze the Webpage:
+A simple message appears:
+"You can find the password for the next level on this page."
+
+
+Inspect Page Source:
+
+
+Right-click > View Page Source
+
+
+You find the password hidden inside an HTML comment:
+
+
+html
+Copy code
+<!--The password for natas1 is <PASSWORD> -->
+Extract the Password:
+Copy the password to use for the next level.
+
+
+Tools Used:
+Browser Developer Tools (Inspect Element / View Source)
+
+
+Logic:
+Information can be hidden in the page source, even if not visible on the page.
+Drive link:
+https://drive.google.com/drive/folders/1n_douFw70Ku2Q9DrKL0K93DJKqhPzwKk?usp=sharing
+Level 1:
+Objective:
+Discover passwords hidden in static HTML content.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas1.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas1
+
+
+Password: (Password found in Level 0)
+
+
+Analyze the Webpage:
+Page says:
+"Nothing here!"
+
+
+Inspect Page Source:
+
+
+Right-click > View Page Source
+
+
+Inside an HTML comment:
+
+
+html
+Copy code
+<!--The password for natas2 is <PASSWORD> -->
+Extract the Password.
+
+
+Tools Used:
+Browser Developer Tools
+
+
+Logic:
+Passwords may be stored within the HTML itself.
+Drive link:
+https://drive.google.com/drive/folders/1QTlxM_LsXjcH76b2uj0nGU1rHGkNgpnp?usp=sharing
+Level 2:
+Objective:
+Explore directory structures and find hidden files.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas2.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas2
+
+
+Password: (Password found in Level 1)
+
+
+Analyze the Webpage:
+Basic static page, no password shown.
+
+
+Guessing Directory Names:
+
+
+Change URL to /files/
+
+
+Example:
+http://natas2.natas.labs.overthewire.org/files/
+
+
+Find a File:
+
+
+users.txt available inside /files/
+
+
+Open users.txt:
+Contains password for the next level.
+
+
+Tools Used:
+URL manipulation in browser
+
+
+Basic web enumeration
+
+
+Logic:
+Files and folders may be exposed directly without proper server restrictions.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1JCYD9k4h3-r-N59vCfk9ECknLleG4evI?usp=sharing
+
+
+Level 3:
+Objective:
+Find secret directories hidden on the webserver.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas3.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas3
+
+
+Password: (Password from Level 2)
+
+
+Inspect Page Source:
+
+
+Find a comment hinting:
+"No more information here! Maybe something is hidden somewhere else..."
+
+
+Guess the Directory:
+
+
+Try common directory names: /s3cr3t/
+
+
+Inside /s3cr3t/:
+
+
+Find users.txt with the password.
+
+
+Tools Used:
+Directory fuzzing (manual)
+
+
+Logic:
+Hidden paths often use obfuscated names but can still be found manually.
+Drive link:
+https://drive.google.com/drive/folders/1cuv8M9TJw-B1Iz52HvpgRv-FIqn6GX3E?usp=sharing
+
+
+Level 4:
+Objective:
+Manipulate HTTP Referer headers to bypass simple checks.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas4.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas4
+
+
+Password: (Password from Level 3)
+
+
+Error Shown:
+"You are visiting from an unknown browser!"
+
+
+Inspect Source Code:
+Hint:
+
+
+html
+Copy code
+<!-- Access allowed only if Referer = "http://natas5.natas.labs.overthewire.org/" -->
+Modify HTTP Referer Header:
+
+
+Use browser extension (Modify Headers plugin) or BurpSuite.
+
+
+Set Referer to http://natas5.natas.labs.overthewire.org
+
+
+Reload the Page:
+Password displayed.
+
+
+Tools Used:
+BurpSuite
+
+
+Modify Headers browser extension
+
+
+Logic:
+Web servers trust Referer headers (even though they are easily spoofed).
+
+
+Drive link:
+https://drive.google.com/drive/folders/1rn6jCVxICOGOzvfrqaEjVdwRvmq7Qmuu?usp=sharing
+Level 5:
+Objective:
+Modify cookies to trick the server into thinking you are authenticated.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas5.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas5
+
+
+Password: (Password from Level 4)
+
+
+Access Denied Page:
+Message: "You are not logged in."
+
+
+Inspect Cookies:
+
+
+Cookie named loggedin=0
+
+
+Modify the Cookie:
+
+
+Change loggedin=0 → loggedin=1
+
+
+Refresh the Page:
+Password revealed.
+
+
+Tools Used:7
+Browser Developer Tools (Application Tab > Cookies)
+
+
+Logic:
+Cookies can often be manipulated client-side unless secured properly.
+
+
+Drive link:
+https://drive.google.com/drive/folders/11ILWQXNGFpqk-tIdkgEy6h5Nim10C4ql?usp=sharing
+Level 6:
+Objective:
+Access hidden configuration files to retrieve secrets.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas6.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas6
+
+
+Password: (Password from Level 5)
+
+
+Form Asking for Secret:
+Enter the correct secret to unlock password.
+
+
+Inspect Source Code:
+Reveals:
+
+
+php
+Copy code
+include "includes/secret.inc";
+Access the File Directly:
+
+
+Visit:
+http://natas6.natas.labs.overthewire.org/includes/secret.inc
+
+
+Find the Secret:
+Submit it into the form — Password displayed.
+
+
+Tools Used:
+Directory traversal
+
+
+Logic:
+Sometimes servers expose include files directly if not protected.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1wjF87ppya19VIc7X6GdzX1aSmTLclFBP?usp=sharing
+Level 7:
+Objective:
+Use path traversal to read system files.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas7.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas7
+
+
+Password: (Password from Level 6)
+
+
+Page with Links:
+Links use:
+
+
+arduino
+Copy code
+index.php?page=home
+Tamper the URL:
+Change it to:
+
+
+bash
+Copy code
+index.php?page=../../etc/natas_webpass/natas8
+Access Password File:
+
+
+Password for next level revealed.
+
+
+Tools Used:
+URL Parameter Tampering
+
+
+Logic:
+Relative path traversal lets you escape directories.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1hwoNWEQHdZGF-hBUC76MrlK22yhMft4E?usp=sharing
+Level 8:
+Objective:
+Understand XOR encryption and base64 decoding.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas8.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas8
+
+
+Password: (Password from Level 7)
+
+
+Inspect Source Code:
+
+
+Password encrypted with XOR and encoded in base64.
+
+
+Reverse the Encryption:
+
+
+Decode base64
+
+
+Apply XOR with the known key to get the password.
+
+
+Use Python Script:
+Simple script to reverse it.
+
+
+Tools Used:
+Python
+
+
+Base64 Decoder
+
+
+Logic:
+XOR is symmetric: encrypting and decrypting uses same process.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1IFUj3cMvjsIU9nXMtU_eXJBjfwTav7gR?usp=sharing
+Level 9:
+Objective:
+Exploit basic SQL Injection vulnerabilities.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas9.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas9
+
+
+Password: (Password from Level 8)
+
+
+Search Box Provided:
+Perform a SQL Injection.
+
+
+Inject Payload:
+Input:
+
+
+makefile
+Copy code
+' OR 1=1 #
+View Results:
+Password revealed.
+
+
+Tools Used:
+Manual SQL Injection
+
+
+Logic:
+' OR 1=1 -- always returns true, bypassing authentication logic.
+Drive link:
+https://drive.google.com/drive/folders/1B26d9mollFMg1i59DyD_uHz71kcRhjyD?usp=sharing
+Level 10:
+Objective:
+Understand and exploit bad input sanitization to bypass web filtering.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas10.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas10
+
+
+Password: (Password from Level 9)
+
+
+Interface:
+
+
+Text box to search for words in a file.
+
+
+View Source Code:
+Shows that the server-side command is:
+
+
+php
+Copy code
+grep -i "$needle" dictionary.txt
+Vulnerability:
+
+
+No proper escaping of $needle.
+
+
+Command Injection possible.
+
+
+Exploit:
+Input:
+
+
+bash
+Copy code
+; cat /etc/natas_webpass/natas11
+(The semicolon ends the grep command and starts a new command.)
+
+
+Password Revealed.
+
+
+Tools Used:
+Basic understanding of command injection
+
+
+Logic:
+Grep command was injectable due to improper input sanitization.
+
+
+Drive link:https://drive.google.com/drive/folders/1gBwU30FusBL5fb7XHheorq1oc1rSwqfg?usp=sharing
+Level11:
+Objective:
+Understand how encrypted cookies can be manipulated if you know the encryption key.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas11.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas11
+
+
+Password: (Password from Level 10)
+
+
+Page Behavior:
+
+
+Cookie named data
+
+
+Cookie is base64-encoded and then XOR-encrypted.
+
+
+View Source Code:
+PHP script shows how encryption works:
+
+
+php
+Copy code
+XOR with known key
+Strategy:
+
+
+Decode the cookie
+
+
+XOR-decrypt it using the known key
+
+
+Change showpassword from no to yes
+
+
+Encrypt and encode again
+
+
+Submit modified cookie.
+
+
+Result:
+Password displayed.
+
+
+Tools Used:
+Python (to decode and re-encode cookies)
+
+
+Logic:
+XOR encryption is symmetric and easily reversible if key is known.
+Drive link:
+https://drive.google.com/drive/folders/1gh48k2snkydzk0_D3K1A-gmUGciKU137?usp=sharing
+Level 12:
+Objective:
+Exploit file upload vulnerabilities to upload executable PHP code.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas12.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas12
+
+
+Password: (Password from Level 11)
+
+
+Interface:
+
+
+Page allows file uploads.
+
+
+Accepts only JPEG images.
+
+
+Trick:
+
+
+Upload a PHP file disguised as a JPG.
+
+
+Payload:
+Example PHP file:
+
+
+php
+Copy code
+<?php echo file_get_contents("/etc/natas_webpass/natas13"); ?>
+Upload and Find Uploaded File URL:
+Execute it — password printed.
+
+
+Tools Used:
+BurpSuite or manual upload
+
+
+PHP
+
+
+Logic:
+Server checked only filename extension, not actual file content.
+Drive link
+https://drive.google.com/drive/folders/1WoxZr1kF3L75QEIdZZvNkeTrIse01VOB?usp=sharing
+Level 13:
+Objective:
+Bypass improved file upload restrictions.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas13.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas13
+
+
+Password: (Password from Level 12)
+
+
+File Upload Page:
+
+
+Now checks MIME Type to block PHP files.
+
+
+Trick:
+
+
+Upload a valid image with PHP code inside.
+
+
+Payload:
+
+
+Create a valid JPEG file with embedded PHP code.
+
+
+Execute Uploaded File:
+
+
+PHP executes, password printed.
+
+
+Tools Used:
+ExifTool (for embedding PHP inside JPEG)
+
+
+BurpSuite
+
+
+Logic:
+File header is validated superficially; deeper file content can still be exploited.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1EfSHUXOeEg_4zKyfpOWh23bRKYUHrLKm?usp=sharing
+Level 14:
+Objective:
+Perform blind SQL injection without seeing output.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas14.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas14
+
+
+Password: (Password from Level 13)
+
+
+Login Form:
+
+
+Vulnerable to SQL Injection.
+
+
+Exploit:
+Input:
+
+
+Copy code
+" OR 1=1 #
+Result:
+
+
+Logs in successfully.
+
+
+Password displayed.
+
+
+Tools Used:
+Basic SQL Injection
+
+
+Logic:
+' OR 1=1 -- bypasses login checking.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1qoC1l_tMKyl6xdzHuM6hZdXkyx6QRnHS?usp=sharing
+Level 15:
+Objective:
+Perform blind SQL Injection character-by-character.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas15.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas15
+
+
+Password: (Password from Level 14)
+
+
+Login Form:
+
+
+No visible error messages.
+
+
+Timing-based or response-based blind injection.
+
+
+Strategy:
+
+
+Try guessing password one character at a time:
+
+
+perl
+Copy code
+natas16" AND password LIKE "a%" #
+Change a to b, c, etc., until you find correct letters.
+
+
+Password Built Slowly.
+
+
+Tools Used:
+BurpSuite
+
+
+SQLMap (optional)
+
+
+Logic:
+Blind injection needs iterative guessing based on server's response.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1BHK_qm8sBuMcXrYGqI5aYAs0c7z3W3kB?usp=sharing
+Level 16:
+Objective:
+Use command injection carefully filtering characters.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas16.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas16
+
+
+Password: (Password from Level 15)
+
+
+Page:
+Input box to search words in a dictionary.
+
+
+Vulnerability:
+
+
+Command Injection possible, but space character is filtered.
+
+
+Bypass Filters:
+Use ${IFS} (Internal Field Separator) instead of spaces.
+
+
+Payload Example:
+
+
+shell
+Copy code
+needle$(grep${IFS}password${IFS}/etc/natas_webpass/natas17)
+Password Revealed.
+
+
+Tools Used:
+Shell Injection
+
+
+Logic:
+Use Linux tricks like ${IFS} to bypass space restrictions.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1a_5k3mxDIcSz3raN7QAGeLD_27Vuo9WJ?usp=sharing
+Level 17:
+Objective:
+Use timing attacks to extract password via blind SQL injection.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas17.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas17
+
+
+Password: (Password from Level 16)
+
+
+Challenge:
+
+
+Blind SQL Injection with no output.
+
+
+Technique:
+
+
+Use SLEEP() function in SQL.
+
+
+Example:
+
+
+perl
+Copy code
+natas18" AND IF(password LIKE "a%", SLEEP(5), 0) #
+Observe Response Time:
+
+
+5-second delay → correct guess.
+
+
+Automate Guessing with a Script.
+
+
+Tools Used:
+Python
+
+
+BurpSuite Intruder
+
+
+Logic:
+If server sleeps → guessed letter is correct.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1mM6q59JgeRHSOGpVU-O_bYVkvIOQ87Vr?usp=sharing
+Level 18:
+Objective:
+Break simple session ID based authentication.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas18.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas18
+
+
+Password: (Password from Level 17)
+
+
+Page:
+Login form.
+
+
+Vulnerability:
+
+
+Session ID is a simple integer between 1 and 640.
+
+
+Exploit:
+
+
+Bruteforce session IDs.
+
+
+Set different PHPSESSID cookies until admin session found.
+
+
+Password Revealed.
+
+
+Tools Used:
+BurpSuite Intruder
+
+
+Python script
+
+
+Logic:
+Predictable session IDs allow bruteforce.
+Drive link:
+https://drive.google.com/drive/folders/1a5D1UXJ10PyFrdMfrvY92K5YkQ0zzyxu?usp=sharing
+Level 19:
+Objective:
+Decode obfuscated usernames and passwords.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas19.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas19
+
+
+Password: (Password from Level 18)
+
+
+Challenge:
+
+
+Login form, but credentials obfuscated.
+
+
+Hint:
+
+
+PHPSESSID cookie again.
+
+
+Exploit:
+
+
+Session ID is constructed as:
+
+
+makefile
+Copy code
+username:password
+Then base64 encoded.
+
+
+Bruteforce Session:
+
+
+Encode admin:admin
+
+
+Test variations until admin session matched.
+
+
+Password Found.
+
+
+Tools Used:
+Base64 Encoder
+
+
+BurpSuite
+
+
+Logic:
+Session construction is insecurely encoded.
+Drive link:
+https://drive.google.com/drive/folders/1qpWTM-All2JQ0ek4CJdMpz6n50G1FW1z?usp=sharing
+Level 20:
+Objective:
+Exploit web race conditions with simultaneous requests.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas21-experimenter.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas21
+
+
+Password: (Password from Level 20)
+
+
+Interface:
+
+
+A settings page allows you to change your user role.
+
+
+Source Code Insight:
+Two subdomains:
+
+
+natas21-experimenter (where settings are modified)
+
+
+natas21 (where access is verified)
+
+
+Exploit:
+
+
+Modify settings to admin=1 on the experimenter subdomain.
+
+
+Then use the same session cookie to access natas21.
+
+
+Result:
+
+
+Now the admin=1 cookie is active.
+
+
+Password displayed on the main page.
+
+
+Tools Used:
+BurpSuite Repeater
+
+
+Logic:
+Session sharing between different subdomains leads to privilege escalation.
+
+
+Drive link
+https://drive.google.com/drive/folders/1HvUqcH96bIOygx1dxbq82jP3DbR2yHJB?usp=sharing
+Level 21:
+Objective:
+Exploit web race conditions with simultaneous requests.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas21-experimenter.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas21
+
+
+Password: (Password from Level 20)
+
+
+Interface:
+
+
+A settings page allows you to change your user role.
+
+
+Source Code Insight:
+Two subdomains:
+
+
+natas21-experimenter (where settings are modified)
+
+
+natas21 (where access is verified)
+
+
+Exploit:
+
+
+Modify settings to admin=1 on the experimenter subdomain.
+
+
+Then use the same session cookie to access natas21.
+
+
+Result:
+
+
+Now the admin=1 cookie is active.
+
+
+Password displayed on the main page.
+
+
+Tools Used:
+BurpSuite Repeater
+
+
+Logic:
+Session sharing between different subdomains leads to privilege escalation.
+
+
+Drive link
+https://drive.google.com/drive/folders/1f2axTIEbJaA8VL0iSIOJv8oN165nvNJE?usp=sharing
+Level 22:
+Objective:
+Use file deletion behavior to bypass page redirections.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas22.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas22
+
+
+Password: (Password from Level 21)
+
+
+Problem:
+
+
+Immediately redirects on every page load.
+
+
+Solution:
+
+
+Use a tool (like cURL or Burp) to disable automatic redirects.
+
+
+Access Page Without Redirect:
+
+
+URL manually:
+
+
+ruby
+Copy code
+?revelio
+Password Revealed.
+
+
+Tools Used:
+curl (curl -i) with -L disabled
+
+
+BurpSuite
+
+
+Logic:
+Prevent browser from automatically following 302 redirects.
+
+
+Drive link
+https://drive.google.com/drive/folders/1QPCBzzVmY66YBDxYy9722FOiiw_vXQe-?usp=sharing
+Level 23:
+Objective:
+Exploit file upload path traversal to execute code.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas23.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas23
+
+
+Password: (Password from Level 22)
+
+
+Page Function:
+
+
+Accepts a filename via GET parameter.
+
+
+Trick:
+
+
+Use .. (dot-dot) path traversal.
+
+
+Exploit:
+Try URL:
+
+
+bash
+Copy code
+?passwd=../../../../etc/natas_webpass/natas24
+Password Revealed.
+
+
+Tools Used:
+Path Traversal Techniques
+
+
+Logic:
+Improper file path validation allows accessing arbitrary system files.
+
+
+Drive link
+https://drive.google.com/drive/folders/1SuFbqutu6LwyJ02MUHVsDFZnyc8uo0k8?usp=sharing
+Level 24:
+Objective:
+Bypass session-based authentication.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas24.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas24
+
+
+Password: (Password from Level 23)
+
+
+Vulnerability:
+
+
+Server uses serialized data for session storage.
+
+
+Exploit:
+
+
+Create a serialized PHP object with admin=1.
+
+
+Base64 encode and inject into cookie.
+
+
+Result:
+
+
+Password displayed.
+
+
+Tools Used:
+PHP serialization
+
+
+BurpSuite
+
+
+Logic:
+Improper session serialization handling allows manipulation.
+
+
+Drive link
+https://drive.google.com/drive/folders/1uJQErYQhtM_aXyKX-8E9r1x1ImRMgV_c?usp=sharing
+Level 25:
+Objective:
+Break PHP Object Injection vulnerabilities.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas25.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas25
+
+
+Password: (Password from Level 24)
+
+
+Challenge:
+
+
+User controlled filenames.
+
+
+Exploit:
+
+
+Upload a file with path traversal using %00 (null byte injection).
+
+
+Upload PHP shell disguised as file.
+
+
+Execute Shell:
+
+
+Password extracted.
+
+
+Tools Used:
+BurpSuite
+
+
+PHP Web Shell
+
+
+Logic:
+Filename manipulation + null byte injection.
+
+
+Drive link
+https://drive.google.com/drive/folders/1Qksx94V1Tpbk3Vhshggk1wEWq4SWIe5z?usp=sharing
+Level 26:
+Objective:
+Exploit PHP include() vulnerabilities.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas26.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas26
+
+
+Password: (Password from Level 25)
+
+
+Trick:
+
+
+File inclusion happens based on user input.
+
+
+Exploit:
+
+
+Include your own uploaded file.
+
+
+Make PHP code execute.
+
+
+Password Revealed.
+
+
+Tools Used:
+BurpSuite
+
+
+PHP Code Execution
+
+
+Logic:
+Arbitrary file inclusion vulnerability.
+
+
+Drive link
+https://drive.google.com/drive/folders/1YLA0v2Epvq8UktgtjaCCNPap3q9uqNgR?usp=sharing
+Level 27:
+Objective:
+Manipulate server-side dynamic evaluation.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas27.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas27
+
+
+Password: (Password from Level 26)
+
+
+Problem:
+
+
+SQL backend truncates long usernames.
+
+
+Exploit:
+
+
+Register two usernames where first matches existing admin partially.
+
+
+Overwrite admin session.
+
+
+Result:
+
+
+Password extracted.
+
+
+Tools Used:
+SQL Injection
+
+
+Username collision
+
+
+Logic:
+Truncation attacks on database fields.
+
+
+Drive link
+https://drive.google.com/drive/folders/1IOlMwtWqF7-MDGadt4ECfTAtrLLAUN5E?usp=sharing
+Level 28:
+Objective:
+Understand custom XOR encryption and reverse it.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas28.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas28
+
+
+Password: (Password from Level 27)
+
+
+Source Code Insight:
+
+
+Message XORed with random key.
+
+
+Strategy:
+
+
+Recover key.
+
+
+Decrypt message manually.
+
+
+Password Revealed.
+
+
+Tools Used:
+Python XOR decoder
+
+
+Logic:
+XOR with known-plaintext attack.
+
+
+Drive link:
+https://drive.google.com/drive/folders/1OWsEEjcrR_2dQS7U_jOWBCWCtYTGKZCP?usp=sharing
+Level 29:
+Objective:
+Attack multi-block XOR encryption.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas29.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas29
+
+
+Password: (Password from Level 28)
+
+
+Challenge:
+
+
+Encryption scheme similar to CBC mode.
+
+
+Strategy:
+
+
+Exploit block structure.
+
+
+Alter encrypted request.
+
+
+Password Extracted.
+
+
+Tools Used:
+Custom XOR scripts
+
+
+CBC Decryption knowledge
+
+
+Logic:
+Block chaining in XOR encryption can be exploited.
+
+
+Drive link
+https://drive.google.com/drive/folders/1so1-T8vHcbp_h8ZbbqqzFYXt3ePqf9dZ?usp=sharing
+Level 30:
+Objective:
+Break padding oracle attacks.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas30.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas30
+
+
+Password: (Password from Level 29)
+
+
+Challenge:
+
+
+User sessions encrypted.
+
+
+Guess padding byte-by-byte.
+
+
+Exploit:
+
+
+Use classic padding oracle technique.
+
+
+Password Found.
+
+
+Tools Used:
+Python Padding Oracle scripts
+
+
+Logic:
+CBC encryption with poor padding error handling.
+Drive link
+https://drive.google.com/drive/folders/1iCcxrlTnkzfYputWYnbo_Q3EZbAwXlCW?usp=sharing
+Level 31:
+Objective:
+Chain previous attacks to full exploit.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas31.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas31
+
+
+Password: (Password from Level 30)
+
+
+Challenge:
+
+
+Same encryption behavior as previous.
+
+
+Exploit:
+
+
+Modify session values using CBC manipulation.
+
+
+Result:
+
+
+Password found.
+
+
+Tools Used:
+CBC Padding Exploit Tools
+
+
+Logic:
+Block tampering through padding oracle.
+
+
+Drive link
+https://drive.google.com/drive/folders/1S8p343rDxb_1E57M_dE_314FDtWSnWvh?usp=sharing
+Level 32:
+Objective:
+Perform advanced timing attacks.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas32.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas32
+
+
+Password: (Password from Level 31)
+
+
+Challenge:
+
+
+Password verified via time-based comparison.
+
+
+Exploit:
+
+
+Use response time differences to guess password character-by-character.
+
+
+Automate with Script:
+Measure delays.
+
+
+Tools Used:
+Python Timing Attack Scripts
+
+
+Logic:
+Slow comparison vulnerabilities.
+Drive link
+https://drive.google.com/drive/folders/1aDwFCmgl8y1OsotQG45IVnmd4Pu5h-Fl?usp=sharing
+Level 33:
+Objective:
+Solve crypto challenges involving public key weaknesses.
+
+
+Step-by-Step Process:
+Visit the URL:
+http://natas33.natas.labs.overthewire.org
+
+
+Authentication:
+
+
+Username: natas33
+
+
+Password: (Password from Level 32)
+
+
+Challenge:
+
+
+Broken crypto based on modular arithmetic.
+
+
+Exploit:
+
+
+Factor numbers
+
+
+Reverse RSA-encryption.
+
+
+Password Found.
+
+
+Tools Used:
+RSA Factoring Tools
+
+
+Python Crypto Libraries
+
+
+Logic:
+Weak keys in cryptography can be easily cracked.

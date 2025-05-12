@@ -1,0 +1,125 @@
+Krypton:-
+
+lvl0=
+1. get -windowscapability -Online | where-object Name -like 'OpenSSH.client*'
+2. Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+3. start-Service sshd
+4. get-service sshd
+5. ssh krypton1@krypton.labs.overthewire.org -p 2231
+6. cd /krypton/
+7. ls -alh
+8. cd krypton1
+9. cat README
+
+-------------------------------------------------------------------------------
+lvl1=
+1. cat krypton2
+2. cat krypton2 | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+Python cmds:
+1.import string
+2.string.ascii_lowercase
+3.''.join([i+' ' for i in string.ascii_lowercase])
+4.ord('a')
+5.ord('n')
+6.ord('z')
+7.ord('A')
+8.ord('Z')
+
+Password=ROTTEN
+--------------------------------------------------------------------------------
+lvl2=
+1.ssh krypton2@krypton.labs.overthewire.org -p 2231
+2. cd /krypton/
+3.ls -alh
+4.cd krypton2
+5. cat README
+6.mktemp -d
+7. cat krypton3
+8. cat keyfile.dat
+9. strings encrypt
+10. mktemp -d
+11.chmod 777 /tmp/tmp.8YCfSSeX7r
+12.cd /tmp/tmp.8YCfSSeX7r
+13. echo 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' > test.txt
+14. ln -s /krypton/krypton2/keyfile.dat
+
+Python cmds:
+1.import string
+2.string.ascii_uppercase
+3.l1='MNOPQRSTUVWXYZABCDEFGHIJKL'
+4.''.join([i+' 'for i in l1])
+5.l2='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+6.''.join([i+' 'for i in l2])
+7.ord('M')
+8.ord('A')
+9.ord('O')
+10.ord('L')
+11.ord('Z')
+
+Password=CAESARISEASY
+---------------------------------------------------------------------------------
+lvl3=
+1.ssh krypton3@krypton.labs.overthewire.org -p 2231
+2. cd /krypton/
+3. cd krypton3/
+4.ls -alh
+5. cat README
+6.cat krypton4
+7. cat HINT1
+8.cat HINT2
+9. cat found1
+10. cat found2
+11. cat found3
+
+Password:-BRUTE
+----------------------------------------------------------------------------------
+lvl4=
+1.ssh krypton4@krypton.labs.overthewire.org -p 2231
+2.cd /krypton/
+3.cd krypton4
+4.ls -alh
+5.cat README
+6.cat HINT
+7.cat found1
+8.cat found2
+9.cat krypton5
+
+Password=CLEARTEXT
+---------------------------------------------------------------------------------
+lvl5=
+1.ssh krypton5@krypton.labs.overthewire.org -p 2231
+2. cd /krypton/krypton5
+3. ls -alh
+4. cat README
+5. cat found1
+6.cat krypton6
+
+Password=RANDOM
+---------------------------------------------------------------------------------
+lvl6=
+1.ssh krypton6@krypton.labs.overthewire.org -p 2231
+2. cd /krypton/krypton6
+3.ls -alh
+4.cat README
+5.cat HINT1
+6. cd onetime/
+7.cat cipher1
+8. cat key1 | wc -c
+9. cat key1
+10. cd ..
+11.mktemp -d
+12.cd /tmp/tmp.9nmEwJuceU
+13.chmod 777 .
+14.ln -s /krypton/krypton6/keyfile.dat
+15. python3 -c 'print("A"*100)' > test_a.txt
+16. cat test_a.txt
+17./krypton/krypton6/encrypt6 test_a.txt test_a_cipher
+18.cat test_a_cipher
+19. python3 -c 'print("B"*100)' > test_b.txt
+20.cat test_b.txt
+21./krypton/krypton6/encrypt6 test_b.txt test_b_cipher
+22. cat test_b_cipher
+
+Password=LFSRISNOTRANDOM
+------------------------------------------------------------------------------------------------------------------------------------------
